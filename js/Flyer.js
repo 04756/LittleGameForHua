@@ -109,7 +109,7 @@ Flyer.prototype = {
 		}
 	},
 	//左右移动
-	moveLeftRight(dir){
+	moveLeftRight : function(dir){
 		switch(dir){
 			case "left":{
 				var left = this.dom.offsetLeft-this.movepx>=0?this.dom.offsetLeft-this.movepx:0;
@@ -138,18 +138,15 @@ Flyer.prototype = {
 	},
 	//子弹发射
 	sendBullet : function(enemyList){
-
 		//遵循子弹级别，子弹级别若为2则一次可发两枚子弹。
+		var _this = this;
 		//建立循环子弹发射
-		for(var i = 1; i < this.bulletLevel; ++i){
+		for(var i = 0; i < this.bulletLevel; ++i){
 			var bullet = new Bullet();
 			console.log(bullet.dom);
 			this.gamePanel.appendChild(bullet.dom);
 			//设置子弹发出位置为user所在位置
-			bullet.setPosition({
-				left: this.dom.offsetLeft,
-				top: this.dom.offsetTop,
-			});
+			bullet.setPosition(this.dom.offsetLeft,this.dom.offsetTop);
 
 			//重写,检测子弹是否能打中monster
 			bullet.checkBeat = function(){

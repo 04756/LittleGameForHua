@@ -16,8 +16,11 @@ Bullet.prototype = {
 		this.dom = document.createElement('div');
 		this.dom.className = 'bullet';
 	},
-	setPositionsetPosition : function(flyerinfo){
-
+	setPosition : function(left,top){
+		console.log(left+"   "+top);
+		this.dom.style.left = left + "px";
+		this.dom.style.top = top + "px";
+		console.log(this.dom.offsetTop);
 	},
 	//子弹动画，移动
 	animation : function(){
@@ -25,10 +28,9 @@ Bullet.prototype = {
 		var _this = this;
 		//处理移动函数
 		var process = function(){
-			
 			var top = _this.dom.offsetTop;
 			
-			top = top - _this.movepx >= 0 ? top - _this.movepx : 0;
+			top = (top - _this.movepx) >= 0 ? (top - _this.movepx) : 0;
 			_this.dom.style.top = top + 'px';
 			//判断是否移动到尽头，是否击中敌机
 			if(top > 0 && !_this.checkBeat()){

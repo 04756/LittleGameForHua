@@ -55,7 +55,6 @@ var Game = {
 	startEnemy : function(){
 		//游戏结束，退出
 		if(this.isGameOver)return;
-		
 		var _this = this;
 		//新建一个敌机对象
 		var enemy = new enemyMonster();
@@ -96,7 +95,6 @@ var Game = {
 		}
 		else return;
 		//回调飞机键盘按下事件
-		console.log(e.keyCode);
 		this.flyer.keydown(e);
 	},
 	//键盘释放事件
@@ -110,7 +108,7 @@ var Game = {
 	changeScore : function(){
 		
 		this.score += 100;
-		document.getElementById('score').innerHTML =  this.score;
+		document.getElementById('gameScore').innerHTML =  this.score;
 		//分数级别
 		//var scoreLevel = parseInt(this.score / 5000,10) + 1;
 		//判断是否升级飞机子弹级别
@@ -148,7 +146,8 @@ var Game = {
 function GameStart(){
 	Game.isGameOver = false;
 	Game.init();
-	//document.getElementById('startBtn').style.display = 'none';
+	//如果不隐藏，按键空格会认为按钮被点击，从而产生bug
+	document.getElementById('startBut').style.display = 'none';
 	document.getElementById('gameScore').innerHTML = 0;
 }
 
@@ -246,7 +245,7 @@ enemyMonster.prototype = {
 	//敌机爆炸
 	effect : function(){
 		//爆炸效果
-		this.dom.className = 'bingo';
+		this.dom.className = 'craft';
 		
 		var _this = this;
 		
