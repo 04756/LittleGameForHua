@@ -35,8 +35,8 @@ var Game = {
 		//启动 敌机
 		this.startEnemy();
 		//设置键盘按下与释放事件
-		//document.body.onkeydown  = function(e){_this.onkeydown(e);};
-		//document.body.onkeyup = function(e){_this.onkeyup(e);}
+		document.body.onkeydown  = function(e){_this.onkeydown(e);};
+		document.body.onkeyup = function(e){_this.onkeyup(e);}
 	},
 	//启动飞机
 	startFlyer : function(){
@@ -96,11 +96,13 @@ var Game = {
 		}
 		else return;
 		//回调飞机键盘按下事件
+		console.log(e.keyCode);
 		this.flyer.keydown(e);
 	},
 	//键盘释放事件
 	onkeyup : function(e){
 		e = e || window.event;
+		console.log(e);
 		//回调飞机键盘释放事件
 		this.flyer.keyup(e);
 	},
@@ -110,20 +112,20 @@ var Game = {
 		this.score += 100;
 		document.getElementById('score').innerHTML =  this.score;
 		//分数级别
-		var scoreLevel = parseInt(this.score / 5000,10) + 1;
+		//var scoreLevel = parseInt(this.score / 5000,10) + 1;
 		//判断是否升级飞机子弹级别
-		if(scoreLevel > 1){
-			this.flyer.bulletLevel = scoreLevel>4?4:scoreLevel;
+		//if(scoreLevel > 1){
+		//	this.flyer.bulletLevel = scoreLevel>4?4:scoreLevel;
 			//修改敌机移动速度
-			Enemy.prototype.movesp = Enemy.prototype.movespMap[this.flyer.bulletLevel];
-		}
+		//	Enemy.prototype.movesp = Enemy.prototype.movespMap[this.flyer.bulletLevel];
+		//}
 	},
 	//游戏结束
 	gameover : function(){
 		
 		this.isGameOver = true;
 		
-		document.getElementById('score').innerHTML = "The Game is Over...You Score:" + this.score;
+		document.getElementById('gameScore').innerHTML = "The Game is Over...You Score:" + this.score;
 		
 		for(var i=0,l=this.enemyList.length;i < l;i++){
 			this.gamePanel.removeChild(this.enemyList[0].dom);

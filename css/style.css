@@ -1,11 +1,25 @@
 *{
 	margin: 0 auto;
+}
+
+body{
 	background-color: #FFF68F;
 }
 
 .bullet{
 	widows: 10px;
 	height: 10px;
+	border: 2px solid #666;
+	position: absolute;
+}
+
+.bingo{
+	width: 100px;
+	height: 100px;
+	bottom: 0px;
+/*	border: 2px solid #666;
+*/	background-image: url('../images/HuaHua.jpg');
+	background-size: 100% 100%;
 	position: absolute;
 }
 
@@ -39,18 +53,20 @@ button.gameStart{
 }
 
 .HuaHua{
-	width: 80px;
+	width: 100px;
 	height: 100px;
 	bottom: 0px;
-	border: 2px solid #666;
+/*	border: 2px solid #666;
+*/	background-image: url('../images/HuaHua.png');
 	background-size: 100% 100%;
 	position: absolute;
 }
 
 .monster{
 	width: 50px;
-	height: 80px;
-	border: 2px solid #666;
+	height: 50px;
+/*	border: 2px solid #666;*/
+	background-image: url('../images/monster.png');
 	background-size: 100% 100%;
 	position: absolute;
 }
